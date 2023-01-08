@@ -1,0 +1,100 @@
+﻿<Window x:Class="BlackJack_4._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJack_4._0"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="760" Loaded="Window_Loaded_1">
+    <Viewbox Stretch="Uniform">
+    <Grid Name="Grid">
+            <Grid.Background>
+                <ImageBrush ImageSource="./images/Extra/background.png"></ImageBrush>
+            </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+
+            <ColumnDefinition Width="225"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="225"></ColumnDefinition>
+
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="2" Background="BlanchedAlmond" Name="LblStatus" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+        <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="25" Name="BtnSecretLog" Background="BlanchedAlmond" MouseEnter="BtnSecretLog_MouseEnter" MouseLeave="BtnSecretLog_MouseLeave"/>
+        <Label Content="Speler" Grid.Row="1" Grid.Column="1" FontSize="36" >
+                <Label.Background>
+                    <ImageBrush ImageSource="./images/Extra/Labelbackground.jpg"></ImageBrush>
+               </Label.Background>
+        </Label>
+        
+        <Label Content="Inzet:"  Grid.Row="1" Grid.Column="1" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.542,-0.478" Margin="0,71,0,0"></Label>
+        <TextBox Name="TxtInzet" Text="{Binding ElementName=SliderInzet, Path=Value, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"  Grid.Column="1" FontSize="14" HorizontalAlignment="Left" Height="30" Width="50" RenderTransformOrigin="0.459,0.562" Margin="144,73,0,22"></TextBox>
+        <Slider Grid.Row="1" Name="SliderInzet" Grid.Column="1" VerticalAlignment="Bottom" Height="20" Minimum="0" TickFrequency="5" IsSnapToTickEnabled="True" ValueChanged="SliderInzet_ValueChanged"></Slider>
+
+        <Label Content="Bank" Grid.Row="1" Grid.Column="3" FontSize="36">
+                <Label.Background>
+                    <ImageBrush ImageSource="./images/Extra/Labelbackground.jpg"></ImageBrush>
+                </Label.Background>
+            </Label>
+        <Label Name="LblBankStatus" Grid.Row="0" Grid.Column="3" FontSize="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="65" Width="225" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+        <Label Name="LblSpelerStatus" Grid.Row="0" Grid.Column="1" FontSize="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="65" Width="225" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+        <Image Name="ImgBankStatus" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Width="75" Height="100" Margin="115,13,0,12"></Image>
+        <Button Content="Deel" Width="150" Height="50" Name="BtnDeel" Grid.Row="1" Grid.Column="2" Click="BtnDeel_Click" VerticalAlignment="Bottom" Background="BlanchedAlmond"></Button>
+
+        <ListBox Name="LstSecretLog" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" FontSize="18" Width="150" Background="BlanchedAlmond"></ListBox>
+        <Button Name="BtnHit" Content="Hit" Width="150" Height="50" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Margin="5" Click="BtnHit_Click" Background="BlanchedAlmond"></Button>
+        <Button Name="BtnStand" Content="Stand" Width="150" Height="50" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Margin="75,117,75,0" Click="BtnStand_Click" Background="BlanchedAlmond" Grid.RowSpan="2"></Button>
+        <Button Name="BtnDoubleDown" Content="Double Down" Width="150" Height="50" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="DarkRed" FontSize="20" Click="BtnDoubleDown_Click"></Button>
+            <Label Name="LblDoubleDownClicked" Grid.Row="3" Grid.Column="2" Height="50" Width="150" VerticalAlignment="Top" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Foreground="Goldenrod" Margin="0,10,0,0"></Label>
+        <Image Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotSpeler1" Grid.ColumnSpan="2" Margin="220,2,0,123" Grid.RowSpan="2"></Image>
+        <Image Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotSpeler2" Margin="220,15,0,110" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Image Grid.Column="1" Grid.Row="2" Width="74" HorizontalAlignment="Left" Name="ImgCardSlotSpeler3" Margin="220,27,0,98" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Image Grid.Column="2" Grid.Row="2" Width="74" Height="125" HorizontalAlignment="Left" VerticalAlignment="Bottom" Name="ImgDoubleDownCard" Margin="70,0,0,95" Grid.RowSpan="2"></Image>
+        <Image Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotSpeler4" Margin="220,42,0,83" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Image Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotSpeler5" Margin="220,55,0,70" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+
+        <Image Grid.Column="2" Grid.Row="1" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotBank1" Grid.ColumnSpan="2" Margin="230,125,0,0" Grid.RowSpan="2"></Image>
+        <Image Grid.Column="2" Grid.Row="2" Width="75" HorizontalAlignment="Left" Name="ImgCardSlotBank2" Margin="230,15,0,110" Grid.RowSpan="2" Grid.ColumnSpan="2"></Image>
+        <Image Grid.Column="2" Grid.Row="2" Width="75" HorizontalAlignment="Right" Name="ImgCardSlotBank3" Margin="0,30,220,95" Grid.RowSpan="2" Grid.ColumnSpan="2"></Image>
+        <Image Grid.Column="2" Grid.Row="2" Width="75" HorizontalAlignment="Right" Name="ImgCardSlotBank4" Grid.ColumnSpan="2" Margin="0,45,220,80" Grid.RowSpan="2"></Image>
+        <Image Grid.Column="2" Grid.Row="2" Width="75" HorizontalAlignment="Right" Name="ImgCardSlotBank5" Margin="0,60,220,65" Grid.RowSpan="2" Grid.ColumnSpan="2"></Image>
+
+        <ListBox Name="LstSpeler" Width="150" Height="150" Grid.Row="2" Grid.Column="1"  Foreground="#FFEBE4E4">
+                <ListBox.Background>
+                    <ImageBrush ImageSource="./images/Extra/Listbackground.jpg"></ImageBrush>
+                </ListBox.Background>
+        </ListBox>
+        <ListBox Name="LstBank" Width="150" Height="150" Grid.Row="2" Grid.Column="3"  Foreground="#FFEDE1E1">
+                <ListBox.Background>
+                    <ImageBrush ImageSource="./images/Extra/Listbackground.jpg"></ImageBrush>
+                </ListBox.Background>
+            </ListBox>
+
+        <Label Name="LblBankPunten" Grid.Row="3" Grid.Column="3" Content="0" VerticalAlignment="Bottom" FontSize="36" Foreground="Goldenrod"></Label>
+        <WrapPanel  Grid.Row="3" Grid.Column="1">
+            <Label  Content="Credits:" VerticalAlignment="top" FontSize="36"></Label>
+            <Label Name="LblSpelerCredits" Content="100" VerticalAlignment="top" FontSize="36"></Label>
+        </WrapPanel>
+        <Label Name="LblSpelerPunten" Grid.Row="3" Grid.Column="1" Content="0" VerticalAlignment="Bottom" FontSize="36" Foreground="Goldenrod"></Label>
+
+        <Label Name="LblUitkomst" Grid.Row="3" Grid.Column="2"  FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Button x:Name="BtnNieuwSpel" Content="Nieuw Spel" Width="150" Height="40" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Click="BtnNieuwSpel_Click" Background="BlanchedAlmond"></Button>
+        <Button Name="BtnVolgende" Content="Volgende Ronde" Width="150" Height="25" Margin="5" Grid.Row="1" Grid.Column="2" Click="BtnVolgende_Click" Background="BlanchedAlmond"></Button>
+
+            <Label Name="LblDeckCards" Grid.Row="3" Grid.Column="2" Width="225" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="38,125,38,0" Grid.RowSpan="2"></Label>
+        <Label Name="LblShuffleDeck" Grid.Row="3" Grid.Column="2" Width="225" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Bottom" FontSize="24" ></Label>
+
+    </Grid>
+    </Viewbox>
+</Window>
